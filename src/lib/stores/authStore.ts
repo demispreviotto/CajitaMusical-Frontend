@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
-import type { UserInfo } from '$lib/types/auth';
+import type { UserInfo } from '$lib/types';
 
 
 interface AuthState {

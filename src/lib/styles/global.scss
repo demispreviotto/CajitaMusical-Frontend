@@ -1,0 +1,148 @@
+/* src/lib/styles/global.scss */
+
+@use './_variables.scss' as *; /* // <--- Import your variables here! */
+
+/* --- Global Body Styles --- */
+body {
+	font-family: var(--font-family);
+	font-weight: 200;
+	background-color: var(--bg-primary);
+	color: var(--text-primary);
+	margin: 0;
+	padding: 0;
+	line-height: 1.6;
+	transition:
+		background-color var(--transition-duration) var(--transition-timing),
+		color var(--transition-duration) var(--transition-timing);
+	min-height: 100vh;
+}
+
+/* --- Global Link Styles --- */
+a {
+	color: var(--accent-color);
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+/* --- Base Button Styles (General appearance for all buttons) --- */
+button,
+.btn {
+	padding: 10px 15px;
+	border: 1px solid transparent;
+	border-radius: var(--border-radius);
+	font-size: 1rem;
+	cursor: pointer;
+	transition:
+		background-color 0.2s ease,
+		color 0.2s ease,
+		border-color 0.2s ease,
+		box-shadow 0.2s ease;
+	text-align: center;
+	text-decoration: none;
+	line-height: 1;
+}
+
+button:disabled,
+.btn:disabled {
+	background-color: var(--border-color);
+	color: var(--text-secondary);
+	cursor: not-allowed;
+	opacity: 0.7;
+}
+
+/* --- Button Variants --- */
+.btn-primary {
+	background-color: var(--accent-color);
+	color: var(--bg-secondary);
+	border-color: var(--accent-color);
+}
+
+.btn-primary:hover:not(:disabled) {
+	background-color: var(--accent-hover-color);
+	border-color: var(--accent-hover-color);
+	box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.btn-secondary {
+	background-color: transparent;
+	color: var(--accent-color);
+	border-color: var(--accent-color);
+}
+
+.btn-secondary:hover:not(:disabled) {
+	background-color: color-mix(in srgb, var(--accent-color) 15%, transparent);
+	color: var(--accent-color);
+	box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.btn-tertiary {
+	background-color: transparent;
+	color: var(--text-primary);
+	border-color: transparent;
+}
+
+.btn-tertiary:hover:not(:disabled) {
+	background-color: var(--bg-secondary);
+	color: var(--text-primary);
+	box-shadow: none;
+}
+
+/* --- Form Group Basic Styles (from your login/register) --- */
+.form-group {
+	margin-bottom: var(--spacing-md);
+	text-align: left;
+}
+
+label {
+	display: block;
+	margin-bottom: var(--spacing-sm);
+	font-weight: bold;
+	color: var(--text-primary);
+}
+
+input[type='text'],
+input[type='email'],
+input[type='password'] {
+	font-family: var(--font-family);
+	width: calc(100% - 20px);
+	padding: 12px 10px;
+	border: 1px solid var(--border-color);
+	border-radius: var(--border-radius);
+	font-size: 16px;
+	box-sizing: border-box;
+	background-color: var(--bg-secondary);
+	color: var(--text-primary);
+}
+
+input[type='text']:focus,
+input[type='email']:focus,
+input[type='password']:focus {
+	font-family: var(--font-family);
+	outline: none;
+	border-color: var(--accent-color);
+	box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+/* --- Message Styles --- */
+.error-message {
+	color: var(--error-color);
+	background-color: color-mix(in srgb, var(--error-color) 15%, transparent);
+	border: 1px solid var(--error-color);
+	padding: var(--spacing-sm);
+	border-radius: var(--border-radius);
+	margin-bottom: var(--spacing-md);
+	text-align: left;
+}
+
+.success-message {
+	color: var(--success-color);
+	background-color: color-mix(in srgb, var(--success-color) 15%, transparent);
+	border: 1px solid var(--success-color);
+	padding: var(--spacing-sm);
+	border-radius: var(--border-radius);
+	margin-bottom: var(--spacing-md);
+	text-align: left;
+}

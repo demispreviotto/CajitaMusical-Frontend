@@ -1,6 +1,6 @@
 // src/lib/api/auth.ts
 import { apiFetch } from './client';
-import type { LoginUserInput, LoginResponse, RegisterUserInput, UserResponse, UserInfo } from '$lib/types/auth';
+import type { LoginUserInput, LoginResponse, RegisterUserInput, UserResponse, UserInfo } from '$lib/types';
 
 export async function loginUser(credentials: LoginUserInput): Promise<LoginResponse> {
     try {
@@ -43,3 +43,4 @@ export async function getUserInfo(): Promise<UserInfo | null> {
         return null;
     }
 }
+// getAuthenticatedUser

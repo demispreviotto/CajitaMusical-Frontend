@@ -1,10 +1,10 @@
 <script lang="ts">
-    import { authStore, logout as clientLogout, initializeAuthStoreWithServerData } from '$lib/stores/authStore';
-    import { logoutUser } from '$lib/api/auth';
-    import { goto } from '$app/navigation';
-
+    import { initializeAuthStoreWithServerData } from '$lib/stores/authStore';    
     import type { LayoutData } from './$types';
     export let data: LayoutData;
+    import '$lib/styles/global.scss';
+	import Header from '$lib/components/layouts/Header.svelte';
+	import Footer from '$lib/components/layouts/Footer.svelte';
 
     // Esta declaración reactiva se ejecutará cuando `data` cambie (al cargar la página o al navegar).
     $: {
@@ -12,39 +12,12 @@
             initializeAuthStoreWithServerData(data.user);
         }
     }
-
-    const handleLogout = async () => {
-        try {
-            await logoutUser();
-            clientLogout();
-            await goto('/login');
-        } catch (error) {
-            console.error('Error during logout:', error);
-        }
-    };
 </script>
 
-<header>
-    <nav>
-        <a href="/">Home</a>
-        {#if $authStore.isLoading}
-            <span>Cargando...</span>
-        {:else if !$authStore.isLoggedIn}
-            <a href="/login">Login</a>
-            <a href="/register">Register</a>
-        {:else}
-            <a href="/library">Library</a>
-            <a href="/profile">Profile</a>
-            <button on:click={handleLogout}>Logout</button>
-        {/if}
-    </nav>
-</header>
+<Header />
 <main>
     <slot /> </main>
 
-<footer>
-    <p>&copy; {new Date().getFullYear()} Cajita Musical</p>
-</footer>
-
+    <!-- <Footer /> -->
 <style>
 </style>

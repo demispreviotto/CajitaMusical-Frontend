@@ -1,5 +1,3 @@
-// src/lib/types/auth.ts
-
 // Define la estructura de la información básica del usuario
 export interface UserInfo {
     id: number;

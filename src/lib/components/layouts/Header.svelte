@@ -3,6 +3,8 @@
     import { logoutUser } from '$lib/api/auth';
     import { goto } from '$app/navigation';
 
+    $: console.log('Current Auth Store State for Header:', $authStore);
+
     import HomeIcon from '$lib/components/icons/HomeIcon.svelte';
     
     // Theme related imports
@@ -26,6 +28,7 @@
 
     // Handler for logout button
     const handleLogout = async () => {
+        console.log("handleLogout")
         try {
             await logoutUser(); // Call backend logout API
             clientLogout();     // Update frontend auth store
@@ -39,16 +42,34 @@
 
 <header class="app-header">
     <nav class="main-nav">
-        <a href="/"><HomeIcon size="20" color="var(--accent-color)"/></a>
+        <a href="/">
+            <!-- <HomeIcon size="20" color="var(--accent-color)"/> -->
+        /home
+        </a>
         {#if $authStore.isLoading}
             <span>Cargando...</span>
         {:else if !$authStore.isLoggedIn}
-            <a href="/login">Login</a>
-            <a href="/register">Register</a>
+            <a href="/login">
+                <!-- Login -->
+                 /login
+            </a>
+            <a href="/register">
+                <!-- Register -->
+                 /register
+            </a>
         {:else}
-            <a href="/library"><PlaylistPlayIcon size="20" color="var(--accent-color)"/></a>
-            <a href="/profile"><BadgeIcon size="20" color="var(--accent-color)"/></a>
-            <Button on:click={handleLogout} variant="secondary"><LogoutIcon size="20" color="var(--accent-color)" /></Button>
+            <a href="/library">
+                <!-- <PlaylistPlayIcon size="20" color="var(--accent-color)"/> -->
+                 /library
+            </a>
+            <a href="/profile">
+                <!-- <BadgeIcon size="20" color="var(--accent-color)"/> -->
+                 /profile
+            </a>
+            <Button onclick={handleLogout} variant="secondary" type='button'>
+                <!-- <LogoutIcon size="20" color="var(--accent-color)" /> -->
+                 /logout
+            </Button>
         {/if}
 
         <!-- <div class="theme-toggle-container">

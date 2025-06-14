@@ -1,30 +1,37 @@
 <script lang="ts">
-    import '$lib/styles/global.scss';
-    export let type: 'button' | 'submit' | 'reset' = 'button';
-
-    export let variant: 'primary' | 'secondary' | 'tertiary' = 'primary';
-    export let disabled: boolean = false;
-    export let isLoading: boolean = false;
+    import type { Snippet } from 'svelte';
+    interface ButtonProps {
+        type?: 'button' | 'submit' | 'reset';
+        variant?: 'primary' | 'secondary' | 'tertiary';
+        disabled?: boolean;
+        isLoading?: boolean;
+        children?: Snippet;
+        onclick?: (event: MouseEvent) => void;
+    }
+    let {
+        type = 'button',
+        variant = 'primary',
+        disabled = false,
+        isLoading = false,
+        children,
+        onclick
+    }: ButtonProps = $props();
 
     </script>
 
 <button
-    {type}
+    type={type}
     disabled={disabled || isLoading}
     class={`btn btn-${variant}`}
-    {...$$restProps} >
+    {onclick}>
     {#if isLoading}
         <span class="spinner"></span> Loading...
     {:else}
-        <slot /> {/if}
+    {@render children?.()}
+    {/if}
 </button>
 
 <style>
-    /*
-       Styles here define the base button look and any variations.
-       Many base styles are pulled from global.css, but this is where
-       you'd add component-specific tweaks or overrides.
-    */
     .btn {
         /* Base styles are already in global.css, but you could add more here */
         display: inline-flex;

@@ -1,6 +1,8 @@
 // src/routes/+layout.server.ts
 import { redirect } from '@sveltejs/kit';
 import type { LayoutServerLoad } from './$types';
+import { PUBLIC_BACKEND_URL } from '$env/static/public';
+import { AUTH_ME } from '$lib/constants/api';
 
 export const load: LayoutServerLoad = async ({ fetch, url }) => {
     // Whitelist paths that don't require authentication check
@@ -10,7 +12,7 @@ export const load: LayoutServerLoad = async ({ fetch, url }) => {
     }
 
     try {
-        const backendUrl = 'http://localhost:8080/me';
+        const backendUrl = `${PUBLIC_BACKEND_URL}${AUTH_ME}`;
         console.log(`[LayoutServerLoad] Attempting to verify authentication by fetching: ${backendUrl}`);
 
         const response = await fetch(backendUrl);

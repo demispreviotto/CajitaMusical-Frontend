@@ -1,8 +1,8 @@
 /* src/lib/styles/_variables.scss */
 
 // --- Sass Variables (Optional, but good for calculations or fixed values) ---
-// $font-stack: 'Carme', sans-serif;
-$font-stack: monospace;
+$font-stack: 'Fira Code', monospace;
+// $font-stack: monospace;
 $max-content-width: 1200px; // Example: for main content max width
 
 // --- CSS Custom Properties (for dynamic theming and easy access in JS) ---
@@ -27,20 +27,6 @@ $max-content-width: 1200px; // Example: for main content max width
 		color var(--transition-duration) var(--transition-timing);
 }
 
-/* --- Light Theme Variables --- */
-body.light-theme {
-	--bg-primary: #f8f8f8; /* Main background */
-	--bg-secondary: #ffffff; /* Card/component background */
-	--text-primary: #333333; /* Main text color */
-	--text-secondary: #666666; /* Secondary text color */
-	--border-color: #b6b6b6;
-	--accent-color: #a1a1a1;
-	--accent-hover-color: #ababab;
-	--error-color: #dc3545;
-	--success-color: #28a745;
-	--shadow-color: rgba(0, 0, 0, 0.1);
-}
-
 /* --- Dark Theme Variables --- */
 body.dark-theme {
 	// --bg-primary: #1a1a1a;
@@ -56,4 +42,17 @@ body.dark-theme {
 	--error-color: #ff6b6b;
 	--success-color: #63d471;
 	--shadow-color: rgba(0, 0, 0, 0.4);
+}
+/* --- Light Theme Variables --- */
+body.light-theme {
+	--bg-primary: #f8f8f8; /* Main background */
+	--bg-secondary: #ffffff; /* Card/component background */
+	--text-primary: #333333; /* Main text color */
+	--text-secondary: #666666; /* Secondary text color */
+	--border-color: #b6b6b6;
+	--accent-color: #a1a1a1;
+	--accent-hover-color: #ababab;
+	--error-color: #dc3545;
+	--success-color: #28a745;
+	--shadow-color: rgba(0, 0, 0, 0.1);
 }
